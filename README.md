@@ -53,7 +53,7 @@ Once completed, move on to the next step.
     - Add kubernetes repository on all nodes.
 
    `$ sudo apt-add-repository 'deb http://apt.kubernetes.io/ kubernetes-xenial main'`
-
+   
 7. Install all required packages on master and all worker nodes
    - Use apt-get command to install kubelet, kubeadm, kubectl, docker.io packages.
 
