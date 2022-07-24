@@ -64,7 +64,8 @@
    `$ sudo systemctl start docker && sudo systemctl enable docker`
 
 10. Initializing and setting up the kubernetes cluster only on Master node
-   - Use “kubeadm” command to initialize the kubernetes cluster along with “apiserver-advertise-address” and “–pod-network-cidr” options. It is used to specify the IP address for kubernetes cluster communication and range of networks for the pods.
+   - Use “kubeadm” command to initialize the kubernetes cluster along with “apiserver-advertise-address” and “–pod-network-cidr” options. 
+   - It is used to specify the IP address for kubernetes cluster communication and range of networks for the pods.
 
    `$ sudo kubeadm init --apiserver-advertise-address=172.16.15.11 --pod-network-cidr=10.0.0.0/16`
 
