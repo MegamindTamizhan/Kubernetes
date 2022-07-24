@@ -8,13 +8,13 @@
    `$ free -h (to check memory)`
 
 2. Make an entry of each host in /etc/hosts file for name resolution on all kubernetes nodes as below or configure it on DNS if you have DNS server.
-```
-    $ cat /etc/hosts
+
+   `$ cat /etc/hosts
     127.0.0.1 localhost
     172.16.15.11 master
     172.16.15.12 nodeone
-    172.16.15.13 nodesecond
-```
+    172.16.15.13 nodesecond`
+
 3. Make sure kubernetes master and worker nodes are reachable between each other.
  
 4. Kubernetes doesn’t support **“Swap”**. Disable Swap on all nodes using below command and also to make it permanent comment out the swap entry in `/etc/fstab` file.
