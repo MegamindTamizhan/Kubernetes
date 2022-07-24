@@ -43,7 +43,7 @@ Before begin, we must update the Ubuntu Repositories and install basic tools lik
 
 Once completed, move on to the next step.
 
-1. Enable Kubernetes repository on master and all worker nodes
+6. Enable Kubernetes repository on master and all worker nodes
    - Add the Kubernetes signing key on all nodes.
 
    `$ wget https://packages.cloud.google.com/apt/doc/apt-key.gpg`
@@ -54,23 +54,23 @@ Once completed, move on to the next step.
 
    `$ sudo apt-add-repository 'deb http://apt.kubernetes.io/ kubernetes-xenial main'`
 
-2. Install all required packages on master and all worker nodes
+7. Install all required packages on master and all worker nodes
    - Use apt-get command to install kubelet, kubeadm, kubectl, docker.io packages.
 
    `$ sudo apt-get update && sudo apt-get install -y kubelet=1.20.0-00 kubeadm=1.20.0-00 kubectl=1.20.0-00 docker.io`
 
-3. Start and Enable docker service on master and all worker nodes
+8. Start and Enable docker service on master and all worker nodes
 
    `$ sudo systemctl start docker && sudo systemctl enable docker`
 
-4. Initializing and setting up the kubernetes cluster only on Master node
+9. Initializing and setting up the kubernetes cluster only on Master node
    - Use “kubeadm” command to initialize the kubernetes cluster along with “apiserver-advertise-address” and “–pod-network-cidr” options. It is used to specify the IP address for kubernetes cluster communication and range of networks for the pods.
 
    `$ sudo kubeadm init --apiserver-advertise-address=172.16.15.11 --pod-network-cidr=10.0.0.0/16`
 
 **Your Kubernetes control-plane has initialized successfully!**
 
-5.  (**a= run as a regular user** or **b= run as a root user**)
+10.  (**a= run as a regular user** or **b= run as a root user**)
 
    a. To start using your cluster, you need to run the following as a regular user:
    ```
@@ -87,7 +87,7 @@ Once completed, move on to the next step.
    **Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:**
    `https://kubernetes.io/docs/concepts/cluster-administration/addons/`
 
-6. Install Network add-on to enable the communication between the pods only on Master node
+11. Install Network add-on to enable the communication between the pods only on Master node
    We have lot of network add-on available to enable the network communication  with different functionality, Here I have used flannel network provider. Flannel is an overlay network provider that can be used with Kubernetes. You can refer more add-on from `https://kubernetes.io/docs/concepts/cluster-administration/addons/`
 
    `$ sudo kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml`
@@ -99,18 +99,18 @@ Once completed, move on to the next step.
 
    Kubernetes cluster initialization is completed, Copy the join token highlighted in yellow color from the “kubeadm init” command output and store it somewhere, it is required while joining the worker nodes.
 
-7. Copy `/etc/kubernetes/admin.conf` and Change Ownership only on Master node
+12. Copy `/etc/kubernetes/admin.conf` and Change Ownership only on Master node
    Once kubernetes cluster is initialized, copy `“/etc/kubernetes/admin.conf”` and change ownership. You could see this same instructions in the output of **“kubeadm init”** command.
 
-8. Use `“kubectl get nodes”` command to ensure the kubernetes master node status is ready. Wait for few minutes until the status of the kubernetes master turn ready state.
+13. Use `“kubectl get nodes”` command to ensure the kubernetes master node status is ready. Wait for few minutes until the status of the kubernetes master turn ready state.
 
    `$ kubectl get nodes`
 
-9. You could see the status of indiviual node using below command 
+14. You could see the status of indiviual node using below command 
 
    `$ kubectl describe node nodesecond`
 
-10. Once worker nodes are joined with kubernetes master, then verify the list of nodes within the kubernetes cluster. Wait for few minutes until the status of the kubernetes nodes turn ready state.
+15. Once worker nodes are joined with kubernetes master, then verify the list of nodes within the kubernetes cluster. Wait for few minutes until the status of the kubernetes nodes turn ready state.
 
    `$ kubectl get nodes`
 
