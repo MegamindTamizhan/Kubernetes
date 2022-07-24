@@ -47,6 +47,7 @@ Once completed, move on to the next step.
     - Add the Kubernetes signing key on all nodes.
 
    `$ wget https://packages.cloud.google.com/apt/doc/apt-key.gpg`
+   
    `$ sudo mv apt-key.gpg /etc/apt/trusted.gpg.d/`
 
     - Add kubernetes repository on all nodes.
