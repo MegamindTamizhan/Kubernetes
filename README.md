@@ -19,7 +19,7 @@
  
 4. Kubernetes doesn’t support **“Swap”**. Disable Swap on all nodes using below command and also to make it permanent comment out the swap entry in `/etc/fstab` file.
 
-    `$ sudo swapoff -a`
+   `$ sudo swapoff -a`
 
 5. Internet must be enabled on all nodes, because required packages for kubernetes cluster will be downloaded from official repository.
    Steps involved to Install Kubernetes Cluster on Ubuntu,
